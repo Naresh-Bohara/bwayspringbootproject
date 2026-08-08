@@ -25,7 +25,7 @@ import lombok.Data;
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	private String fname;
 	private String lname;
 	private String gender;
