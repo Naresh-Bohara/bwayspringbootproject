@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Department</title>
+</head>
+<body>
+<th:block th:insert="header.html"></th:block>
+	<h1>Department Form</h1>
+	<hr>
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-header bg-primary text-center text-white">
+				<h4>Department Details:</h4>
+			</div>
+			<div class="card-body ">
+				<form action="/department" method="post">
+				<div class="row p-2">
+					<div class="col-4">Department Name</div>
+					<div class="col-6">
+						<input type="text" name="dptName"
+							placeholder="Enter Department Name" class="form-control">
+					</div>
+				</div>
+
+				<div class="row p-2">
+					<div class="col-4">Department Phone</div>
+					<div class="col-6">
+						<input type="text" name="dptPhone"
+							placeholder="Enter Department Phone" class="form-control">
+					</div>
+				</div>
+
+				<div class="row p-2">
+					<div class="col-4">Department Head(HOD)</div>
+					<div class="col-6">
+						<input type="text" name="dptHead"
+							placeholder="Enter Department Head" class="form-control">
+					</div>
+				</div>
+
+				<div class="row p-2">
+					<div class="col-4"></div>
+					<div class="col-6">
+
+						<input type="submit" value="Add Department"
+							class="btn btn-success btn-lg">
+					</div>
+				</div>
+				</form>
+
+
+			</div>
+			<div class="card-footer bg-warning text-center">@copyright2026</div>
+		</div>
+	</div>
+</body>
+</html>
