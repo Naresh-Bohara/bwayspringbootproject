@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Details</title>
+</head>
+
+<body>
+
+<th:block th:insert="header.html"></th:block>
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <!-- Header -->
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">Employee Details</h3>
+        </div>
+
+        <div class="card-body">
+
+            <!-- ================= PERSONAL INFORMATION ================= -->
+            <h5 class="bg-primary text-white p-2 rounded">
+                Personal Information
+            </h5>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">First Name</div>
+                <div class="col-md-8" th:text="${eModel.fname}"></div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">Last Name</div>
+                <div class="col-md-8" th:text="${eModel.lname}"></div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">Gender</div>
+                <div class="col-md-8" th:text="${eModel.gender}"></div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">Phone</div>
+                <div class="col-md-8" th:text="${eModel.phone}"></div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">Email</div>
+                <div class="col-md-8" th:text="${eModel.email}"></div>
+            </div>
+
+
+            <!-- ================= JOB INFORMATION ================= -->
+            <h5 class="bg-primary text-white p-2 rounded mt-3">
+                Job Information
+            </h5>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">Company</div>
+                <div class="col-md-8" th:text="${eModel.company}"></div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">Post</div>
+                <div class="col-md-8" th:text="${eModel.post}"></div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">Salary</div>
+                <div class="col-md-8" th:text="${eModel.salary}"></div>
+            </div>
+
+
+            <!-- ================= DEPARTMENTS ================= -->
+            <h5 class="bg-primary text-white p-2 rounded mt-3">
+                Departments
+            </h5>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">
+                    Assigned Departments
+                </div>
+
+                <div class="col-md-8">
+
+                    <span th:each="d : ${eModel.departments}"
+                          class="badge bg-info text-dark me-2"
+                          th:text="${d.dptName}">
+                    </span>
+
+                </div>
+            </div>
+
+
+            <!-- ================= PROJECTS ================= -->
+            <h5 class="bg-primary text-white p-2 rounded mt-3">
+                Projects
+            </h5>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">
+                    Assigned Projects
+                </div>
+
+                <div class="col-md-8">
+
+                    <span th:each="project : ${eModel.projects}"
+                          class="badge bg-success me-2"
+                          th:text="${project}">
+                    </span>
+
+                </div>
+            </div>
+
+
+            <!-- ================= DATE INFORMATION ================= -->
+            <h5 class="bg-primary text-white p-2 rounded mt-3">
+                Date Information
+            </h5>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">
+                    Date of Birth
+                </div>
+                <div class="col-md-8"
+                     th:text="${eModel.dob}">
+                </div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">
+                    Join Date
+                </div>
+                <div class="col-md-8"
+                     th:text="${eModel.joinDate}">
+                </div>
+            </div>
+
+
+            <!-- ================= ADDRESS ================= -->
+            <h5 class="bg-primary text-white p-2 rounded mt-3">
+                Address Information
+            </h5>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">
+                    Country
+                </div>
+                <div class="col-md-8"
+                     th:text="${eModel.address.country}">
+                </div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">
+                    City
+                </div>
+                <div class="col-md-8"
+                     th:text="${eModel.address.city}">
+                </div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">
+                    State
+                </div>
+                <div class="col-md-8"
+                     th:text="${eModel.address.state}">
+                </div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-md-4 fw-bold">
+                    Zip Code
+                </div>
+                <div class="col-md-8"
+                     th:text="${eModel.address.zipcode}">
+                </div>
+            </div>
+
+
+            <!-- ================= ACTIONS ================= -->
+            <div class="text-center mt-4">
+
+                <a th:href="@{/emp/edit(id=${eModel.id})}"
+                   class="btn btn-success">
+                    Edit Employee
+                </a>
+
+                <a href="/employee-list"
+                   class="btn btn-secondary">
+                    Back to List
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="card-footer bg-warning text-center">
+            © 2026 Employee Management System
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

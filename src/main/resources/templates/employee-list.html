@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee List</title>
+</head>
+<body>
+<th:block th:insert="header.html"></th:block>
+
+	<div class="container mt-5">
+
+		<div class="card shadow">
+
+			<div
+				class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+				<h4 class="mb-0">Employee List</h4>
+
+				<a href="/employee" class="btn btn-success"> + Add Employee
+				</a>
+			</div>
+
+			<div class="card-body">
+
+				<table
+					class="table table-striped table-hover table-bordered align-middle text-center">
+
+					<thead class="">
+						<tr>
+							<th>S.N.</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Company</th>
+							<th>Phone</th>
+							<th>City</th>
+							<th width="180">Action</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:each="emp, str : ${empList}">
+							<td>[[${str.count}]]</td>
+							<td>[[${emp.fname}]]</td>
+							<td>[[${emp.lname}]]</td>
+							<td>[[${emp.company}]]</td>
+							<td>[[${emp.phone}]]</td>
+							<td>[[${emp.address.city}]]</td>
+							
+							<td>
+    <!-- View -->
+    <a th:href="@{/emp/view(id=${emp.id})}"
+       class="btn btn-info btn-sm text-white">
+        View
+    </a>
+
+    <!-- Edit -->
+    <a th:href="@{/emp/edit(id=${emp.id})}"
+       class="btn btn-success btn-sm">
+        Edit
+    </a>
+
+    <!-- Delete -->
+    <a th:href="@{/emp/delete(id=${emp.id})}"
+       class="btn btn-danger btn-sm"
+       onclick="return confirm('Are you sure you want to delete this employee?')">
+        Delete
+    </a>
+</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+			</div>
+
+			<div class="card-footer text-center bg-warning">© 2026
+				Department Management System</div>
+
+		</div>
+
+	</div>
+</body>
+</html>

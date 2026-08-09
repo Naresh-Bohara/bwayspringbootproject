@@ -2,11 +2,11 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Employee</title>
+<title>Employee Edit</title>
 </head>
 <body>
 	<th:block th:insert="header.html"></th:block>
-	<h1>Employee Form</h1>
+	<h1>Employee Edit</h1>
 	<hr>
 	<div class="container-fluid">
 		<div class="card">
@@ -14,7 +14,7 @@
 				<h4>Employee Details:</h4>
 			</div>
 			<div class="card-body ">
-				<form action="/employee" method="post">
+				<form action="/emp/update" method="post" th:object="${eModel}">
 
 	<!-- ================= PERSONAL INFORMATION ================= -->
 	<h5 class="bg-primary text-white p-2 rounded">
@@ -26,7 +26,7 @@
 			<label for="fname" class="form-label">First Name</label>
 		</div>
 		<div class="col-md-6">
-			<input type="text" id="fname" name="fname"
+			<input type="text" id="fname" th:field="*{fname}"
 				placeholder="Enter Employee First Name"
 				class="form-control">
 		</div>
@@ -37,7 +37,7 @@
 			<label for="lname" class="form-label">Last Name</label>
 		</div>
 		<div class="col-md-6">
-			<input type="text" id="lname" name="lname"
+			<input type="text" id="lname" th:field="*{lname}"
 				placeholder="Enter Employee Last Name"
 				class="form-control">
 		</div>
@@ -50,13 +50,13 @@
 		<div class="col-md-6 pt-1">
 
 			<div class="form-check form-check-inline">
-				<input type="radio" name="gender" id="male"
+				<input type="radio" th:field="*{gender}" id="male"
 					value="male" class="form-check-input">
 				<label for="male" class="form-check-label">Male</label>
 			</div>
 
 			<div class="form-check form-check-inline">
-				<input type="radio" name="gender" id="female"
+				<input type="radio" th:field="*{gender}" id="female"
 					value="female" class="form-check-input">
 				<label for="female" class="form-check-label">Female</label>
 			</div>
@@ -69,7 +69,7 @@
 			<label for="phone" class="form-label">Phone</label>
 		</div>
 		<div class="col-md-6">
-			<input type="tel" id="phone" name="phone"
+			<input type="tel" id="phone" th:field="*{phone}"
 				placeholder="Enter Employee Phone"
 				class="form-control">
 		</div>
@@ -80,7 +80,7 @@
 			<label for="email" class="form-label">Email</label>
 		</div>
 		<div class="col-md-6">
-			<input type="email" id="email" name="email"
+			<input type="email" id="email" th:field="*{email}"
 				placeholder="Enter Employee Email"
 				class="form-control">
 		</div>
@@ -97,7 +97,7 @@
 			<label for="company" class="form-label">Company</label>
 		</div>
 		<div class="col-md-6">
-			<input type="text" id="company" name="company"
+			<input type="text" id="company" th:field="*{company}"
 				placeholder="Enter Employee Company"
 				class="form-control">
 		</div>
@@ -110,7 +110,7 @@
 
 	<div class="col-md-6">
 		<select id="departments"
-				name="departments"
+				th:field="*{departments}"
 				class="form-select"
 				multiple
 				size="5">
@@ -133,7 +133,7 @@
 			<label for="post" class="form-label">Post</label>
 		</div>
 		<div class="col-md-6">
-			<input type="text" id="post" name="post"
+			<input type="text" id="post" th:field="*{post}"
 				placeholder="Enter Employee Post"
 				class="form-control">
 		</div>
@@ -144,7 +144,7 @@
 			<label for="salary" class="form-label">Salary</label>
 		</div>
 		<div class="col-md-6">
-			<input type="number" id="salary" name="salary"
+			<input type="number" id="salary" th:field="*{salary}"
 				placeholder="Enter Employee Salary"
 				class="form-control">
 		</div>
@@ -165,7 +165,7 @@
 
 			<div class="form-check">
 				<input type="checkbox" id="project1"
-					name="projects" value="project-1"
+					th:field="*{projects}" value="project-1"
 					class="form-check-input">
 				<label for="project1" class="form-check-label">
 					Project-1
@@ -174,7 +174,7 @@
 
 			<div class="form-check">
 				<input type="checkbox" id="project2"
-					name="projects" value="project-2"
+					th:field="*{projects}" value="project-2"
 					class="form-check-input">
 				<label for="project2" class="form-check-label">
 					Project-2
@@ -183,7 +183,7 @@
 
 			<div class="form-check">
 				<input type="checkbox" id="project3"
-					name="projects" value="project-3"
+					th:field="*{projects}" value="project-3"
 					class="form-check-input">
 				<label for="project3" class="form-check-label">
 					Project-3
@@ -192,7 +192,7 @@
 
 			<div class="form-check">
 				<input type="checkbox" id="project4"
-					name="projects" value="project-4"
+					th:field="*{projects}" value="project-4"
 					class="form-check-input">
 				<label for="project4" class="form-check-label">
 					Project-4
@@ -201,7 +201,7 @@
 
 			<div class="form-check">
 				<input type="checkbox" id="project5"
-					name="projects" value="project-5"
+					th:field="*{projects}" value="project-5"
 					class="form-check-input">
 				<label for="project5" class="form-check-label">
 					Project-5
@@ -222,7 +222,7 @@
 			<label for="dob" class="form-label">Date of Birth</label>
 		</div>
 		<div class="col-md-6">
-			<input type="date" id="dob" name="dob"
+			<input type="date" id="dob" th:field="*{dob}"
 				class="form-control">
 		</div>
 	</div>
@@ -232,7 +232,7 @@
 			<label for="joinDate" class="form-label">Join Date</label>
 		</div>
 		<div class="col-md-6">
-			<input type="date" id="joinDate" name="joinDate"
+			<input type="date" id="joinDate" th:field="*{joinDate}"
 				class="form-control">
 		</div>
 	</div>
@@ -248,7 +248,7 @@
 			<label for="country" class="form-label">Country</label>
 		</div>
 		<div class="col-md-6">
-			<input type="text" id="country" name="address.country"
+			<input type="text" id="country" th:field="*{address.country}"
 				placeholder="Enter Employee Country"
 				class="form-control">
 		</div>
@@ -259,7 +259,7 @@
 			<label for="city" class="form-label">City</label>
 		</div>
 		<div class="col-md-6">
-			<input type="text" id="city" name="address.city"
+			<input type="text" id="city" th:field="*{address.city}"
 				placeholder="Enter Employee City"
 				class="form-control">
 		</div>
@@ -270,7 +270,7 @@
 			<label for="state" class="form-label">State</label>
 		</div>
 		<div class="col-md-6">
-			<select id="state" name="address.state"
+			<select id="state" th:field="*{address.state}"
 				class="form-select">
 
 				<option value="">--- Select State ---</option>
@@ -291,7 +291,7 @@
 			<label for="zipcode" class="form-label">Zip Code</label>
 		</div>
 		<div class="col-md-6">
-			<input type="text" id="zipcode" name="address.zipcode"
+			<input type="text" id="zipcode" th:field="*{address.zipcode}"
 				placeholder="Enter Employee Zip Code"
 				class="form-control">
 		</div>
@@ -308,6 +308,9 @@
 				class="btn btn-success btn-lg px-4">
 		</div>
 	</div>
+	
+	<input type="hidden" th:field="*{id}">
+	<input type="hidden" th:field="*{address.id}">
 
 </form>
 			</div>

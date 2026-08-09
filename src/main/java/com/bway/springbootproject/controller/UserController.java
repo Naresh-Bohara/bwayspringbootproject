@@ -27,6 +27,11 @@ public class UserController {
 		return "signup";
 	}
 	
+	@GetMapping("/home")
+	String homePage() {
+		return "home";
+	}
+	
 	@PostMapping("/signup")
 	public String registerUser(@ModelAttribute User u, Model model) {
 		if(!u.getPassword().equals(u.getConfirmPassword())) {
