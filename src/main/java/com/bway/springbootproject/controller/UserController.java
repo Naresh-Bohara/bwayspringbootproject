@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.bway.springbootproject.model.User;
 import com.bway.springbootproject.service.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
 	
@@ -44,12 +46,13 @@ public class UserController {
 		return "login";
 	}
 	@PostMapping("/login")
-	public String loginUser(@ModelAttribute User u, Model model) {
+	public String loginUser(@ModelAttribute User u, Model model, HttpSession session) {
 		u.setPassword(DigestUtils.md5DigestAsHex(u.getPassword().getBytes()));
 		User usr = userService.loginUser(u.getUsername(), u.getPassword());
 		if(usr!=null) {
-			model.addAttribute("username", u.getUsername());
-			return "home";
+			session.setAttribute("activeUser", usr);
+			session.setMaxInactiveInterval(400);
+			return "redirect:/home";
 		}
 		
 		model.addAttribute("error", "Invalid username or password!");
@@ -57,7 +60,13 @@ public class UserController {
 	return "login";
 	}
 	@GetMapping("/logout")
-	public String logout() {
+	public String logout(HttpSession session) {
+		session.invalidate(); // kill session
 		return "login";
+	}
+	
+	@GetMapping("/profile")
+	public String profile() {
+		return "profile";
 	}
 }
