@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Gallery</title>
+</head>
+<body>
+	<h1> Gallery Form </h1>
+	<th:block th:insert="header.html"></th:block>
+	<hr>
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-header bg-primary text-center text-white">
+				<h4>Images Gallery</h4>
+			</div>
+			<div class="card-body ">
+				<span th:each="imgName: ${imgList}">
+					<img  th:src="@{'/images/'+${imgName}}" height="300px" width="300px" class="p-2">
+				</span>
+			</div>
+			<div class="card-footer bg-warning text-center">@copyright2026</div>
+		</div>
+	</div>
+</body>
+</html>
