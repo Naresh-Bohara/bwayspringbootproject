@@ -12,8 +12,10 @@ import com.bway.springbootproject.model.User;
 import com.bway.springbootproject.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
 public class UserController {
 	
 	@Autowired
@@ -52,16 +54,18 @@ public class UserController {
 		if(usr!=null) {
 			session.setAttribute("activeUser", usr);
 			session.setMaxInactiveInterval(400);
+			log.info("----login success---");
 			return "redirect:/home";
 		}
 		
 		model.addAttribute("error", "Invalid username or password!");
-		
+		log.info("----login failed!---");
 	return "login";
 	}
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate(); // kill session
+		log.info("---user logout ---");
 		return "login";
 	}
 	
