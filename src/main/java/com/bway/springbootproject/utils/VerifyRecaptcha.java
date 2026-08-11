@@ -1,4 +1,4 @@
-package com.appsoft.springproject.uitls;
+package com.bway.springbootproject.utils;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -15,8 +15,8 @@ import javax.net.ssl.HttpsURLConnection;
 public class VerifyRecaptcha {
 
 	public static final String url = "https://www.google.com/recaptcha/api/siteverify";
-	public static final String secret = "6LcvvdgqAAAAAOxilQGtVFnum2PzyfUkoMHhutYg";
-	private final static String USER_AGENT = "Mozilla/5.0";
+	public static final String secret = "6LcEW4AtAAAAADn-7J3dk4wt4FUdsgN-1uEA6WMz";
+	private final static String USER_AGENT = "Mozilla/5.0"; 
 
 	public static boolean verify(String gRecaptchaResponse) throws IOException {
 		if (gRecaptchaResponse == null || "".equals(gRecaptchaResponse)) {

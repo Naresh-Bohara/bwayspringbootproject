@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bway.springbootproject.model.Department;
 import com.bway.springbootproject.service.DepartmentService;
+import com.bway.springbootproject.utils.DepartmentExcelView;
+import com.bway.springbootproject.utils.DepartmentPdfView;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -78,6 +81,23 @@ public class DepartmentController {
 		}
 		deptService.updateDepartment(dept);
 		return "redirect:/department-list";
+	}
+	
+	@GetMapping("/dept/excel")
+	public ModelAndView excel() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("dList", deptService.getAllDepartments());
+		mv.setView(new DepartmentExcelView());
+		return mv;
+	}
+	
+	
+	@GetMapping("/dept/pdf")
+	public ModelAndView pdf() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("dList", deptService.getAllDepartments());
+		mv.setView(new DepartmentPdfView());
+		return mv;
 	}
 	
 }
