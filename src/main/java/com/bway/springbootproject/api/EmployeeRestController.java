@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.bway.springbootproject.model.Employee;
 import com.bway.springbootproject.service.EmployeeService;
@@ -46,6 +47,18 @@ public class EmployeeRestController {
 		return "";
 	}
 	
+	@GetMapping("/api/emp/j2o")
+	public String jsonToObject() {
+		RestTemplate rtmp = new RestTemplate();
+		Employee emp = rtmp.getForObject("http://localhost:8080/api/emp/2", Employee.class);
+		return "First Name: "+emp.getFname();
+	}
 	
+	@GetMapping("/api/emp/ja2oa")
+	public String jsonArrayToObjectArray() {
+		RestTemplate rtmp = new RestTemplate();
+		Employee[] emps= rtmp.getForObject("http://localhost:8080/api/emp/list", Employee[].class);
+		return "Name: "+emps[2].getFname()+" "+emps[2].getLname();
+	}
 	
 }
