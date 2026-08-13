@@ -62,6 +62,9 @@ public class UserController {
 			if (usr != null) {
 				session.setAttribute("activeUser", usr);
 				session.setMaxInactiveInterval(400);
+				if(usr.getRole().equals("customer")) {
+					return "customer-home";
+				}
 				log.info("----login success---"); 
 				return "redirect:/home";
 			} else {
