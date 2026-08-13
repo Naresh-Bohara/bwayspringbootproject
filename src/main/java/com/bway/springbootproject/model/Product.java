@@ -16,14 +16,14 @@ import lombok.Data;
 @Table(name = "product_tbl")
 public class Product {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String title;
 	@Column(columnDefinition = "longtext")
 	private String description;
 	private double price;
 	private String category;
-	private String image;
+	private String image; 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "rating_id")
 	private Rating rating;
