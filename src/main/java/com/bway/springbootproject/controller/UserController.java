@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bway.springbootproject.model.User;
+import com.bway.springbootproject.repository.ProductRepository;
 import com.bway.springbootproject.service.UserService;
 import com.bway.springbootproject.utils.VerifyRecaptcha;
 
@@ -24,8 +25,17 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ProductRepository prodRepo;
+	
+	@GetMapping("/")
+	public String getIndex(Model model) {
+		model.addAttribute("prodList", prodRepo.findAll());
+		return "customer-home";
+	}
 
-	@GetMapping({ "/", "/login" })
+	@GetMapping("/login")
 	String loginPage() {
 		return "login";
 	}
